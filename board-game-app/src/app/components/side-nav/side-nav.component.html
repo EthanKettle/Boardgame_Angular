@@ -1,1 +1,13 @@
-<p>side-nav works!</p>
+<mat-drawer-container class="drawer-container">
+    <mat-drawer mode="side" opened>
+        <mat-list style="overflow: hidden">
+            <mat-list-item *ngFor="let menuItem of menuItems" [routerLink]="menuItem.route">
+              <mat-icon class="material-icons-outlined">{{menuItem.icon}}</mat-icon>
+              <div>{{menuItem.name}}</div>
+            </mat-list-item>
+        </mat-list>
+    </mat-drawer>
+    <mat-drawer-content>
+        <router-outlet></router-outlet>
+    </mat-drawer-content>
+</mat-drawer-container>
