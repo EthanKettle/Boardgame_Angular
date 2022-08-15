@@ -10,6 +10,7 @@ import { GameDetailsComponent } from './components/game-details/game-details.com
 import { GameDetailControlsComponent } from './components/game-detail-controls/game-detail-controls.component';
 import { UserSelectionsComponent } from './components/user-selections/user-selections.component';
 import { MaterialModule } from './modules/material.module';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { MaterialModule } from './modules/material.module';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
