@@ -69,4 +69,4 @@ export interface Game {
     weight_amount: number;
     weight_units: string;
     year_published: number;
-  } 
+} 

@@ -1,1 +1,21 @@
-<p>game-search works!</p>
+<div>
+    <div class="search-container">
+        <mat-form-field appearance="outline">
+            <input matInput type="text" [(ngModel)]="searchText" placeholder="Search for games" />
+        </mat-form-field>
+        
+        <button mat-raised-button color="primary" (click)="search()">Search</button>
+    </div>
+
+    <div class="searched-games">
+        <mat-card class="game-card" *ngFor="let game of games">
+            <div class="card-title-container">
+                <mat-card-title>{{game?.name}}</mat-card-title>
+            </div>
+            <img mat-card-image [src]="game?.images">
+            <mat-card-content>
+                <div>{{game?.description_preview | slice: 0:80}} ...</div>
+            </mat-card-content>
+        </mat-card>
+    </div>
+</div>
