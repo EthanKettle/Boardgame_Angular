@@ -11,11 +11,21 @@
         <mat-card class="game-card" *ngFor="let game of games">
             <div class="card-title-container">
                 <mat-card-title>{{game?.name}}</mat-card-title>
+                <mat-icon *ngIf="ownedGames[game.id]" class="material-icons-outlined selected-icon">verified</mat-icon>
+                <mat-icon *ngIf="wishListGames[game.id]" class="selected-icon">switch_access_shortcut</mat-icon>
             </div>
-            <img mat-card-image [src]="game?.images">
+            <img mat-card-image [src]="game.images.medium">
             <mat-card-content>
                 <div>{{game?.description_preview | slice: 0:80}} ...</div>
             </mat-card-content>
+            <mat-card-actions>
+                <button mat-mini-fab color="primary" matTooltip="Add to list of owned games" (click)="updateOwnedList($event, game)">
+                    <mat-icon class="material-icons-outlined">verified</mat-icon>
+                </button>
+                <button mat-mini-fab matTooltip="Add to wishlist" (click)="updateWishlist($event, game)">
+                    <mat-icon>switch_access_shortcut</mat-icon>
+                </button>
+            </mat-card-actions>
         </mat-card>
     </div>
 </div>
