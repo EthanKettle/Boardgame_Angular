@@ -38,4 +38,26 @@ export class GameDetailsComponent implements OnInit {
     this.localStorageService.wishListGames.subscribe(games => this.wishListGames = _.mapKeys(games, 'id'));
   }
 
+  setGameList(listType: ListType) {
+    if (listType === ListType.OWNEDLIST) {
+        if (this.ownedGames[this.game.id]) {
+            this.localStorageService.deleteGame(this.game, ListType.OWNEDLIST);
+        } else {
+            if (this.wishListGames[this.game.id]) {
+                this.localStorageService.deleteGame(this.game, ListType.WISHLIST);
+            }
+            this.localStorageService.saveGame(this.game, ListType.OWNEDLIST);
+        }
+    } else {
+        if (this.wishListGames[this.game.id]) {
+            this.localStorageService.deleteGame(this.game, ListType.WISHLIST);
+        } else {
+            if (this.ownedGames[this.game.id]) {
+                this.localStorageService.deleteGame(this.game, ListType.OWNEDLIST);
+            }
+            this.localStorageService.saveGame(this.game, ListType.WISHLIST);
+        }
+    }
+  }
+
 }
