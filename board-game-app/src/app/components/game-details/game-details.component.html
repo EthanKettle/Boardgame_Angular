@@ -1,1 +1,51 @@
-<p>game-details works!</p>
+<div class="main-container">
+    <div class="details-container">
+      <img [src]="game?.images.large"/>
+  
+      <div class="sideInfo">
+        <div class="title">
+          <div>{{game?.name}}</div>
+          <mat-icon *ngIf="ownedGames[game?.id]" class="material-icons-outlined selected-icon">verified</mat-icon>
+          <mat-icon *ngIf="wishListGames[game?.id]" class="selected-icon">switch_access_shortcut</mat-icon>
+        </div>
+  
+        <div class="topMargin">
+          <div class="rowData">
+            <div class="subTitle">Minimum Age</div>
+            <div>{{game?.min_age}}</div>
+          </div>
+  
+          <div class="rowData">
+            <div class="subTitle">Min Players</div>
+            <div>{{game?.min_players}}</div>
+          </div>
+  
+          <div class="rowData">
+            <div class="subTitle">Max Players</div>
+            <div>{{game?.max_players}}</div>
+          </div>
+  
+          <div class="rowData">
+            <div class="subTitle">Min Play Time</div>
+            <div>{{game?.min_playtime}} minutes</div>
+          </div>
+  
+          <div class="rowData toMargin">
+            <div class="subTitle">Game Designer</div>
+            <div>{{game?.primary_designer.name}}</div>
+          </div>
+  
+          <div class="artistContainer">
+            <div class="subTitle">Artists</div>
+            <div style="display: inherit; flex-wrap: wrap;">
+                <div *ngFor="let artist of game?.artists; let i = index;">
+                    <div [ngStyle]="{'margin-right': game.artists.length > 1 && i !== game.artists.length -1 ? '3px' : ''}">
+                        {{game.artists.length > 1 && i !== game.artists.length -1 ? artist + ', ' : artist}}
+                  </div>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

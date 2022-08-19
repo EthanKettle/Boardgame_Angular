@@ -8,7 +8,7 @@
     </div>
 
     <div class="searched-games">
-        <mat-card class="game-card" *ngFor="let game of games">
+        <mat-card class="game-card" *ngFor="let game of games" (click)="goToGameDetails(game)">
             <div class="card-title-container">
                 <mat-card-title>{{game?.name}}</mat-card-title>
                 <mat-icon *ngIf="ownedGames[game.id]" class="material-icons-outlined selected-icon">verified</mat-icon>

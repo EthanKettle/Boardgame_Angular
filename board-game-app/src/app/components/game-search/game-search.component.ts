@@ -4,6 +4,7 @@ import { Game } from 'src/app/interfaces/game';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { ListType } from 'src/app/enums/list-type';
 import * as _ from 'lodash';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-game-search',
@@ -18,7 +19,8 @@ export class GameSearchComponent implements OnInit {
 
   constructor(
     private gameService: GameService,
-    private localStorageService: LocalStorageService
+    private localStorageService: LocalStorageService,
+    private router: Router,
   ) { }
 
   ngOnInit(): void {
@@ -57,5 +59,9 @@ updateWishlist(event: MouseEvent, game: Game) {
         }
         this.localStorageService.saveGame(game, ListType.WISHLIST);
     }
+  }
+
+  goToGameDetails(game: Game) {
+    this.router.navigate(['./game-details', { gameId: game.id }]);
   }
 }
