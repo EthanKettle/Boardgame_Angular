@@ -1,1 +1,49 @@
-<p>user-selections works!</p>
+<div class="main-container">
+    <div class="title">{{listTypeTitle}}</div>
+
+    <table mat-table [dataSource]="dataSource" class="selection-table">
+        <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="image">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <img [src]="element.images.thumb">
+            </td>
+        </ng-container>
+
+        <ng-container matColumnDef="min_age">
+            <th mat-header-cell *matHeaderCellDef>Min Age</th>
+            <td mat-cell *matCellDef="let element"> {{element.min_age}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="min_players">
+            <th mat-header-cell *matHeaderCellDef>Min Players</th>
+            <td mat-cell *matCellDef="let element"> {{element.min_players}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="max_players">
+            <th mat-header-cell *matHeaderCellDef>Max Players</th>
+            <td mat-cell *matCellDef="let element"> {{element.max_players}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="min_playtime">
+            <th mat-header-cell *matHeaderCellDef>Min Playtime</th>
+            <td mat-cell *matCellDef="let element"> {{element.min_playtime}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="delete">
+            <th mat-header-cell *matHeaderCellDef></th>
+            <td mat-cell *matCellDef="let element">
+                <button mat-icon-button (click)="deleteGame(element)">
+                    <mat-icon>delete</mat-icon>
+                </button>
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+</div>
